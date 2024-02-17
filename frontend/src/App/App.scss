@@ -1,0 +1,30 @@
+@import "../variables.scss";
+
+body {
+  background-color: $background;
+}
+
+.App-header {
+  display: flex;
+  position: fixed;
+  left: 0;
+  top: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100vh;
+  background-color: $black;
+  z-index: 1000;
+}
+
+.main-content {
+  margin-left: 200px;
+  padding: 20px;
+}
+
+.vertical-text {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  color: $primary;
+  font-size: -webkit-xxx-large;
+}
