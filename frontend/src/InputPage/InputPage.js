@@ -24,22 +24,22 @@ const InputPage = () => {
       const formData = new FormData();
       formData.append("video", selectedFile);
 
-      // const response = await fetch("http://localhost:5000/upload", {
-      //   method: "POST",
-      //   body: formData,
-      // });
+      const response = await fetch("http://localhost:5000/upload", {
+        method: "POST",
+        body: formData,
+      });
 
       // Handle the response from the backend
-      // const result = await response.json();
-      let result = [
-        "refrigerator",
-        "cup",
-        "bottle",
-        "chair",
-        "bed",
-        "laptop",
-        "person",
-      ];
+      const result = await response.json();
+      // let result = [
+      //   "refrigerator",
+      //   "cup",
+      //   "bottle",
+      //   "chair",
+      //   "bed",
+      //   "laptop",
+      //   "person",
+      // ];
       localStorage.setItem("results", JSON.stringify(result));
       console.log(result);
       navigate("/results-page");
