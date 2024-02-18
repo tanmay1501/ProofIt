@@ -16,7 +16,7 @@ function App() {
         <Route path="/input" element={<InputPage />} />
         <Route path="/input-page" element={<InputPage />} />
         <Route path="/button-form" element={<ButtonForm />} />
-        <Route path="/results-page" element={<ResultsPage />} />
+        <Route path="/results-form" element={<ResultsPage />} />
       </Routes>
     </Router>
   );
