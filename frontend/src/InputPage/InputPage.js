@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import FloatingButtons from "./Utils/FloatingButtons";
 import "./InputPage.scss";
 
 const InputPage = () => {
@@ -28,7 +27,6 @@ const InputPage = () => {
           </video>
         </div>
       )}
-      <FloatingButtons />
     </div>
   );
 };

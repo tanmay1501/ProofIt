@@ -1,0 +1,39 @@
+@import "../variables.scss";
+
+form {
+  color: hotpink;
+  .formContainer {
+    display: flex;
+    flex-wrap: wrap;
+
+    .button {
+      margin: 5px;
+      padding: 5px;
+      border: 2px solid $primary;
+      border-radius: 2px;
+      background-color: $primary;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        background-color: darken($primary, 10%);
+        transform: scale(4);
+      }
+
+      &.selected {
+        background-color: $highlight;
+        border-color: $highlight;
+
+        &:hover {
+          background-color: darken($highlight, 10%);
+        }
+      }
+    }
+
+    .next {
+      background-color: $primary;
+    }
+  }
+}
