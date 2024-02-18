@@ -24,7 +24,6 @@ const InputPage = () => {
       const formData = new FormData();
       formData.append("video", selectedFile);
 
-      // Assuming your backend endpoint is at http://yourbackend.com/upload
       const response = await fetch("http://localhost:5000/upload", {
         method: "POST",
         body: formData,
@@ -33,6 +32,7 @@ const InputPage = () => {
       // Handle the response from the backend
       const result = await response.json();
       console.log(result);
+      navigate("/results-page");
     } catch (error) {
       console.error("Error uploading video:", error);
     }
