@@ -8,7 +8,7 @@ const ButtonObject = [
   },
   {
     buttonNumber: 2,
-    buttonLabel: "Physically Disabled",
+    buttonLabel: "Specially Abled",
     buttonTooltip: "Tooltip for Button 2",
     selected: false,
   },

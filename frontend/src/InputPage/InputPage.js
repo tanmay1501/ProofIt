@@ -15,7 +15,26 @@ const InputPage = () => {
     if (btn === "back") {
       navigate("/button-form");
     } else if (btn === "next") {
-      navigate("/input-page");
+      handleAnalyze();
+    }
+  };
+
+  const handleAnalyze = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("video", selectedFile);
+
+      // Assuming your backend endpoint is at http://yourbackend.com/upload
+      const response = await fetch("http://localhost:5000/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      // Handle the response from the backend
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.error("Error uploading video:", error);
     }
   };
 
@@ -25,28 +44,34 @@ const InputPage = () => {
 
   return (
     <div className="input-page-container">
-      <h2>Upload Video</h2>
-      <input
-        type="file"
-        id="fileUploadBtn"
-        onChange={handleFileChange}
-        accept="video/mp4,video/x-m4v,video/*"
-      />
+      <div className="input-container">
+        <h2>Upload Video</h2>
+        <input
+          type="file"
+          id="fileUploadBtn"
+          onChange={handleFileChange}
+          accept="video/mp4,video/x-m4v,video/*"
+        />
 
-      {selectedFile && (
-        <div className="video-container">
-          <video controls autoPlay>
-            <source src={URL.createObjectURL(selectedFile)} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      )}
+        {selectedFile && (
+          <div className="video-container">
+            <video controls autoPlay>
+              <source
+                src={URL.createObjectURL(selectedFile)}
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        )}
+      </div>
+
       <div className="navigation">
         <button className="back" onClick={() => handleNavigation("back")}>
           Back
         </button>
         <button className="next" onClick={() => handleNavigation("next")}>
-          Next
+          Analyze
         </button>
       </div>
     </div>
