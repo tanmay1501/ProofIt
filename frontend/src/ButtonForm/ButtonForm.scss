@@ -1,0 +1,44 @@
+@import "../variables.scss";
+
+.btnContainer {
+  display: block;
+  margin: 50px;
+  text-align: -webkit-center;
+
+  table {
+    button {
+      font-size: x-large;
+      padding: 40px 200px;
+      margin: 10px;
+      border: 5px solid $highlight;
+      border-radius: 30px;
+      width: 600px;
+      height: 120px;
+      background-color: $light-grey;
+      color: $dark-grey;
+
+      &:hover {
+        cursor: pointer;
+        font-size: medium;
+        background-color: $highlight;
+      }
+
+      &:active {
+        border: 5px solid $primary;
+        background-color: $primary;
+      }
+
+      &.selected {
+        font-size: x-large;
+        color: $light-grey;
+        border: 5px solid $primary;
+        background-color: $primary;
+      }
+    }
+  }
+}
+
+.navigation.next {
+  float: right;
+  margin: 0px 100px 50px 200px;
+}

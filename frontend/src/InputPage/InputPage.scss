@@ -1,0 +1,34 @@
+.input-page-container {
+  text-align: center;
+  font-size: -webkit-large;
+
+  .input-container {
+    display: flow;
+    position: relative;
+    justify-content: center;
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    input {
+      align-self: center;
+      font-size: 18px;
+      padding: 14px 24px 16px;
+    }
+  }
+}
+
+.video-container {
+  width: 100%; // Adjust as needed
+  height: auto; // Adjust as needed
+  max-width: 800px; // Adjust as needed
+  margin: 0 auto; // Center the video
+  border-radius: 8px; // Add rounded corners if desired
+
+  video {
+    width: 50%;
+    height: 50%;
+    border-radius: inherit; // Inherit the border-radius from the container
+  }
+}
