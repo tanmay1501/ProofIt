@@ -3,19 +3,20 @@ import imageObjects from "../Data/imageObjects";
 import "./Results.scss";
 
 const items = localStorage.getItem("results");
-
-const images = JSON.parse(items).map((item) => {
-  const image = imageObjects.find((obj) => obj.id === item);
-  return (
-    <div className="result-item" key={image.id}>
-      <h3>{image.id}</h3>
-      <div className="image-container">
-        <img src={image.before} alt="before" />
-        <img src={image.after} alt="after" />
-      </div>
-    </div>
-  );
-});
+const images = items
+  ? JSON.parse(items).map((item) => {
+      const image = imageObjects.find((obj) => obj.id === item);
+      return (
+        <div className="result-item" key={image.id}>
+          <h3>{image.id}</h3>
+          <div className="image-container">
+            <img src={image.before} alt="before" />
+            <img src={image.after} alt="after" />
+          </div>
+        </div>
+      );
+    })
+  : [];
 
 const ResultsPage = () => {
   return (
