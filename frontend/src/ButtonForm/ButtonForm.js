@@ -1,4 +1,3 @@
-// ButtonForm.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ButtonObject from "./ButtonObject";
@@ -9,6 +8,9 @@ const ButtonForm = () => {
 
   const [buttons, setButtons] = useState(ButtonObject);
 
+  // Use an object to store hover state for each button
+  const [hoveredButtons, setHoveredButtons] = useState({});
+
   const handleButtonClick = (buttonNumber) => {
     setButtons((prevButtons) =>
       prevButtons.map((button) =>
@@ -17,6 +19,13 @@ const ButtonForm = () => {
           : button
       )
     );
+  };
+
+  const handleButtonHover = (buttonTooltip, isHovered) => {
+    setHoveredButtons((prevHoveredButtons) => ({
+      ...prevHoveredButtons,
+      [buttonTooltip]: isHovered,
+    }));
   };
 
   const handleSubmit = (event) => {
@@ -29,27 +38,50 @@ const ButtonForm = () => {
     navigate("/input");
   };
 
-  let buttonClass = "button";
+  const isNextButtonDisabled = buttons.every((button) => !button.selected);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="formContainer">
-        {buttons.map((button) => (
-          <button
-            key={button.buttonNumber}
-            onClick={() => handleButtonClick(button.buttonNumber)}
-            className={`${buttonClass} ${button.selected ? "selected" : ""}`}
-            title={button.buttonTooltip}
-            type="button" // Specify type as "button" to prevent form submission
-          >
-            {button.buttonLabel}
-          </button>
-        ))}
-        <button className="next" type="submit">
+    <div>
+      <div className="btnContainer">
+        <table className="button-table">
+          <thead></thead>
+          <tbody>
+            {buttons.map((button, index) => (
+              <tr key={index}>
+                <td>
+                  <button
+                    className={`button ${button.selected ? "selected" : ""}`}
+                    onClick={() => handleButtonClick(button.buttonNumber)}
+                    onMouseEnter={() =>
+                      handleButtonHover(button.buttonTooltip, true)
+                    }
+                    onMouseLeave={() =>
+                      handleButtonHover(button.buttonTooltip, false)
+                    }
+                  >
+                    {button.selected
+                      ? button.buttonLabel
+                      : hoveredButtons[button.buttonTooltip]
+                      ? button.buttonTooltip
+                      : button.buttonLabel}
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="navigation">
+        <button
+          className="next"
+          type="submit"
+          disabled={isNextButtonDisabled}
+          onClick={handleSubmit}
+        >
           Next
         </button>
       </div>
-    </form>
+    </div>
   );
 };
 

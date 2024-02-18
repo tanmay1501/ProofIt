@@ -1,39 +1,36 @@
 @import "../variables.scss";
 
-form {
-  color: hotpink;
-  .formContainer {
-    display: flex;
-    flex-wrap: wrap;
+.btnContainer {
+  display: block;
+  margin: 50px;
+  text-align: -webkit-center;
 
-    .button {
-      margin: 5px;
-      padding: 5px;
-      border: 2px solid $primary;
-      border-radius: 2px;
-      background-color: $primary;
-      color: #fff;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      transition: transform 0.3s ease;
+  table {
+    button {
+      padding: 50px 200px;
+      margin: 10px;
+      border: 5px solid $highlight;
+      border-radius: 30px;
+      width: -webkit-fill-available;
 
       &:hover {
-        background-color: darken($primary, 10%);
-        transform: scale(4);
+        background-color: $highlight;
+      }
+
+      &:active {
+        border: 5px solid $primary;
+        background-color: $primary;
       }
 
       &.selected {
-        background-color: $highlight;
-        border-color: $highlight;
-
-        &:hover {
-          background-color: darken($highlight, 10%);
-        }
+        border: 5px solid $primary;
+        background-color: $primary;
       }
     }
-
-    .next {
-      background-color: $primary;
-    }
   }
+}
+
+.navigation {
+  float: right;
+  margin: 0px 100px 50px 200px;
 }

@@ -8,13 +8,13 @@ function App() {
   return (
     <Router>
       <header className="App-header">
-        <h1 className="vertical-text">Shield Pro</h1>
+        <h1 className="app-text">Guard AI</h1>
       </header>
       <Routes>
         <Route path="/" element={<ButtonForm />} />
         <Route path="/input" element={<InputPage />} />
         <Route path="/input-page" element={<InputPage />} />
-        <Route path="/button" element={<ButtonForm />} />
+        <Route path="/button-form" element={<ButtonForm />} />
       </Routes>
     </Router>
   );
