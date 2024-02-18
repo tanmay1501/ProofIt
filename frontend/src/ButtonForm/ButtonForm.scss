@@ -1,9 +1,25 @@
 @import "../variables.scss";
 
+.btn-page {
+  background-image: url("../question.png");
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
 .btnContainer {
   display: block;
-  margin: 50px;
+  padding: 50px;
   text-align: -webkit-center;
+
+  .background-image {
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
 
   table {
     button {

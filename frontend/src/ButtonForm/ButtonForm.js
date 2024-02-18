@@ -41,7 +41,7 @@ const ButtonForm = () => {
   const isNextButtonDisabled = buttons.every((button) => !button.selected);
 
   return (
-    <div>
+    <div className="btn-page">
       <div className="btnContainer">
         <table className="button-table">
           <thead></thead>

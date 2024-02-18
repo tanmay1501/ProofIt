@@ -1,0 +1,46 @@
+@import "../variables.scss";
+
+.landing-page {
+  font-family: "Arial", sans-serif;
+
+  .hero-section {
+    position: relative;
+    height: 600px;
+    color: white;
+
+    .background-image {
+      background-image: url("https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=2948&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+      background-size: cover;
+      background-position: center;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      z-index: -1;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      z-index: 0;
+    }
+
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+
+      h1 {
+        font-size: 40px;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+}

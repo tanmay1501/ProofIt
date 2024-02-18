@@ -53,36 +53,38 @@ const InputPage = () => {
   }, [navigate]);
 
   return (
-    <div className="input-page-container">
-      <div className="input-container">
-        <h2>Upload Video</h2>
-        <input
-          type="file"
-          id="fileUploadBtn"
-          onChange={handleFileChange}
-          accept="video/mp4,video/x-m4v,video/*"
-        />
+    <div className="input">
+      <div className="input-page-container">
+        <div className="input-container">
+          <h2>Upload Video</h2>
+          <input
+            type="file"
+            id="fileUploadBtn"
+            onChange={handleFileChange}
+            accept="video/mp4,video/x-m4v,video/*"
+          />
 
-        {selectedFile && (
-          <div className="video-container">
-            <video controls autoPlay>
-              <source
-                src={URL.createObjectURL(selectedFile)}
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        )}
-      </div>
+          {selectedFile && (
+            <div className="video-container">
+              <video controls autoPlay>
+                <source
+                  src={URL.createObjectURL(selectedFile)}
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          )}
+        </div>
 
-      <div className="navigation">
-        <button className="back" onClick={() => handleNavigation("back")}>
-          Back
-        </button>
-        <button className="next" onClick={() => handleNavigation("next")}>
-          Analyze
-        </button>
+        <div className="navigation">
+          <button className="back" onClick={() => handleNavigation("back")}>
+            Back
+          </button>
+          <button className="next" onClick={() => handleNavigation("next")}>
+            Analyze
+          </button>
+        </div>
       </div>
     </div>
   );
