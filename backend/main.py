@@ -12,62 +12,40 @@ video_out_path = os.path.join('.', 'out.mp4')
 
 cap = cv2.VideoCapture(video_path)
 ret, frame = cap.read()
-#cap_out = cv2.VideoWriter(video_out_path, cv2.VideoWriter_fourcc(*'MP4V'), cap.get(cv2.CAP_PROP_FPS),(frame.shape[1], frame.shape[0]))
-print(ret)
+cap_out = cv2.VideoWriter(video_out_path, cv2.VideoWriter_fourcc(*'mp4v'), cap.get(cv2.CAP_PROP_FPS),(frame.shape[1], frame.shape[0]))
 model = YOLO("yolov8n.pt")
-
+items = set()
+min_confidence = 0.6
 while ret:
     results = model(frame)
+
     for result in results:
+
         for r in result.boxes.data.tolist():
+
             x1, y1, x2, y2, score, class_id = r
             x1 = int(x1)
             x2 = int(x2)
             y1 = int(y1)
             y2 = int(y2)
             class_id = int(class_id)
-            # print(classes[class_id],score)
-            frame = cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+
+            if score > min_confidence:
+                text = f'{classes[class_id]}: {score:.2f}'
+                frame = cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                frame = cv2.putText(frame, text , (x2, y2-15), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2, cv2.LINE_AA)
+                items.add(classes[class_id])
         
         cv2.imshow('frame', frame)
+        cap_out.write(frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-    ret, frame = cap.read()
-
-# for result in results:
-#     # print(result.boxes.data.tolist())
-#     detections = []
-#     for r in result.boxes.data.tolist():
-#         x1, y1, x2, y2, score, class_id = r
-#         x1 = int(x1)
-#         x2 = int(x2)
-#         y1 = int(y1)
-#         y2 = int(y2)
-#         class_id = int(class_id)
-#         print(classes[class_id],score)
-
-
-# colors = [(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)) for j in range(10)]
-
-# detection_threshold = 0.5
-
     
-#             if score > detection_threshold:
-#                 detections.append([x1, y1, x2, y2, score])
-#             # frame =  cv2.rectangle(frame, (x1, y1), (x2,y2), (0,255,0), 2)
-# #         # tracker.update(frame, detections)
+    ret, frame = cap.read()
+    
 
-# #         # for track in tracker.tracks:
-# #         #     bbox = track.bbox
-# #         #     x1, y1, x2, y2 = bbox
-# #         #     track_id = track.track_id
-
-# #         #     cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (colors[track_id % len(colors)]), 3)
-
-# #     # cap_out.write(frame)
-#     ret, frame = cap.read()
     
 
 cap.release()
-# cap_out.release()
+cap_out.release()
 cv2.destroyAllWindows()
