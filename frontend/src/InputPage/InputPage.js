@@ -31,6 +31,7 @@ const InputPage = () => {
 
       // Handle the response from the backend
       const result = await response.json();
+      localStorage.setItem("results", JSON.stringify(result));
       console.log(result);
       navigate("/results-page");
     } catch (error) {
