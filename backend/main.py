@@ -10,6 +10,7 @@ CORS(app)
 
 def hello():
     video = request.files['video']
+    buttonobject = request.form['buttonObj']
     video.save(os.path.join('.','data','input.mp4'))
     classes = ["person","bicycle","car","motorbike","aeroplane","bus","train","truck","boat","traffic light","fire hydrant","stop sign","parking meter","bench","bird","cat","dog","horse","sheep","cow","elephant","bear","zebra","giraffe","backpack","umbrella","handbag","tie","suitcase","frisbee","skis","snowboard","sports ball","kite","baseball bat","baseball glove","skateboard","surfboard","tennis racket","bottle","wine glass","cup","fork","knife","spoon","bowl","banana","apple","sandwich","orange","broccoli","carrot","hot dog","pizza","donut","cake","chair","sofa","pottedplant","bed","diningtable","toilet","tvmonitor","laptop","mouse","remote","keyboard","cell phone","microwave","oven","toaster","sink","refrigerator","book","clock","vase","scissors","teddy bear","hair drier","toothbrush"]
     video_path =os.path.join('.','data','input.mp4')
@@ -53,17 +54,19 @@ def hello():
     cv2.destroyAllWindows()
     not_include = ["person","cup","bottle"]
     objects = [i for i in objects if i not in not_include]
-    print(list(objects))
-    return list(objects)
- 
-@app.route('/suggestion', methods=['POST'])
-def suggestion(objects):
+
     GOOGLE_API_KEY='AIzaSyD_PgJzgN2ojtIYSRgthWP-foxnYaSVGlY'
     genai.configure(api_key=GOOGLE_API_KEY)
     model = genai.GenerativeModel('gemini-pro')
-    response = model.generate_content("You are proofing household items to make the room in view more accessible and safer to the following groups of people: young children (newborns and toddlers), the elderly (65+), chronically ill patients, and the physically disabled/handicapped (i.e. those who use assistive devices for mobility such as walkers and wheelchairs). Give 3 suggestions for each category included in the statement on how to proof the"+objects+"that are detected. ")
-    print(jsonify(response.text))
-    return jsonify(response.text)
+    my_list = ", ".join(list(objects))
+    my_category = ", ".join(list(buttonobject))
+    response = model.generate_content("You are proofing household items to make the room in view more accessible and safer to the following groups of people:"+my_category+ ". Give 3 suggestions for each category regarding how to safe-proof the "+my_list+" item only. ")
+    
+    response = {"suggestion": response.text,"items": list(objects)}
+    return response
+ 
+
+    
  
 if __name__ == '__main__':
     app.run(debug=True)    

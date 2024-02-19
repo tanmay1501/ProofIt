@@ -61,8 +61,6 @@ const ButtonForm = () => {
                   >
                     {button.selected
                       ? button.buttonLabel
-                      : hoveredButtons[button.buttonTooltip]
-                      ? button.buttonTooltip
                       : button.buttonLabel}
                   </button>
                 </td>

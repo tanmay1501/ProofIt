@@ -17,7 +17,7 @@ function App() {
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="button-form">Questionnaire</a>
+              <a href="button-form">Home Analysis</a>
             </li>
             <li>
               <a href="">Services</a>

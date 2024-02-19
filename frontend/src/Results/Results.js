@@ -1,28 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import imageObjects from "../Data/imageObjects";
 import "./Results.scss";
 
-const items = localStorage.getItem("results");
-const images = items
-  ? JSON.parse(items).map((item) => {
-      const image = imageObjects.find((obj) => obj.id === item);
-      return (
-        <div className="result-item" key={image.id}>
-          <h3>{image.id}</h3>
-          <div className="image-container">
-            <img src={image.before} alt="before" />
-            <img src={image.after} alt="after" />
-          </div>
-        </div>
-      );
-    })
-  : [];
-
 const ResultsPage = () => {
+  const items = localStorage.getItem("items");
+  const array = JSON.parse(items);
+  const suggestion = localStorage.getItem("suggestion");
+
+  // Split the text into sections based on double line breaks
+  const sections = suggestion.split('\n\n');
+
+  // Function to format each section
+  const formatSection = (section) => {
+    const lines = section.split('\n'); // Split the section into lines
+    const title = lines[0].replace(/\*\*(.*?)\*\*/g, '<h2>$1</h2>'); // Format the title
+    const items = lines.slice(1).map(line => line.replace(/^\s*\*\s*(.*?)$/g, '<li>$1</li>')).join(''); // Format the list items
+    return `<div>${title}<ul>${items}</ul></div>`; // Combine title and list items
+  };
+
+  // Format each section and join them together
+  const inputt = sections.map(section => formatSection(section)).join('');
+  const formattedText = inputt.replace(/["\*\\n]/g, '');
+
   return (
-    <div className="results-page">
-      <h1>Results Page</h1>
-      <div className="results-container">{images}</div>
+    <div>
+      <h1>List of Objects Detected</h1>
+      <ol>
+        {array.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ol>
+      <div>
+        <h1>Suggestions</h1>
+        <div  className="suggestions" dangerouslySetInnerHTML={{ __html: formattedText }}></div>
+      </div>
     </div>
   );
 };
