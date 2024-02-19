@@ -1,14 +1,14 @@
-# Shield Pro
+# Guard AI
 
 ## Overview
 
-Shield Pro is an application designed to enhance safety by using machine learning to identify objects that may pose hazards in various environments. The app aims to provide users with real-time information about potential dangers and suggestions on how to proof or secure these objects to prevent accidents.
+Guard AI is an application designed to enhance safety by using machine learning to identify objects that may pose hazards in various environments. The app aims to provide users with real-time information about potential dangers and suggestions on how to proof or secure these objects to prevent accidents.
 
 ## Features
 
 ### Object Identification
 
-Shield Pro utilizes a machine learning model to accurately identify objects within its scope. The model has been trained on a diverse dataset to recognize common household, workplace, and outdoor items.
+Guard AI utilizes a machine learning model to accurately identify objects within its scope. The model has been trained on a diverse dataset to recognize common household, workplace, and outdoor items.
 
 ### Hazard Assessment
 
@@ -16,21 +16,21 @@ Once an object is identified, the app assesses its potential hazard level based 
 
 ### Proofing Recommendations
 
-SafeProof not only identifies hazards but also provides users with practical recommendations on how to proof or secure the identified objects. This may include suggestions for proper storage, installation of safety devices, or relocation of items to safer locations.
+Guard AI not only identifies hazards but also provides users with practical recommendations on how to proof or secure the identified objects. This may include suggestions for proper storage, installation of safety devices, or relocation of items to safer locations.
 
 ## Getting Started
 
 ### Installation
 
-To install SafeProof, follow these steps:
+To install Guard AI, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/ProofIt.git`
+1. Clone the repository: `git clone https://github.com/your-username/Guard-AI.git`
 2. Navigate to the project directory: `cd frontend`
 3. Install dependencies: `npm install`
 
 ### Usage
 
-1. Open the Shield Pro app on your device.
+1. Open the Guard AI app on your device.
 2. Upload a pre recorded video to our website.
 4. Receive real-time feedback on identified hazards and proofing recommendations.
 
