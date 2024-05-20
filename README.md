@@ -1,5 +1,5 @@
 # Guard AI
-[![Watch the video]](https://youtu.be/BZGVyYhEMF4)
+[![Watch the video](https://github.com/tanmay1501/ProofIt/blob/main/Thumbnail.jpg)](https://youtu.be/BZGVyYhEMF4)
 
 ## Overview
 
